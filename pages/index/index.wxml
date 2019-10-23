@@ -7,7 +7,42 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+
+  <view class="name">
+    <input  class="name" bindblur="getName" placeholder="请输入姓名"></input>
   </view>
+
+  <view class="ID">
+   <input class="id" bindblur="getId" placeholder="请输入学员编号"></input>
+  </view>
+
+  <view>
+   <input class="group" bindblur="getGroup" placeholder="请输入小组号"></input>
+  </view>
+
+  <view>
+   <input class="age" bindblur="getAge" placeholder="请输入年龄"></input>
+  </view>
+
+<view class="section">
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{sex}}">
+    <view class="picker">
+      请选择性别：{{sex[index]}}
+    </view>
+  </picker>
 </view>
+
+<view class="pst">
+  <picker bindchange="bindPositionChange" value="{{index}}" range="{{position}}">
+    <view class="picker">
+      您是学员还是管理员：{{position[index2]}}
+    </view>
+  </picker>
+</view>
+
+  <view class="login">
+   <button bindtap="login">注册</button>
+  </view>
+  
+  </view>
+

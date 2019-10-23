@@ -4,17 +4,111 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
+   
+    sex:['男','女'],
+    objectSex:[
+      {
+      id:1,
+      name:'男'
+      },
+      {
+        id:2,
+        name:'女'
+      }
+    ],
+    position:['学员','管理员'],
+    objectPosition:[
+      {
+        id:1,
+        name:'学员'
+      },
+      {
+        id:2,
+        name:'管理员'
+      }
+    ],
+    name:'',
+    id:'',
+    group:'',
+    age:'',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
+
+  getName:function(e){
+    this.setData({
+      name:e.detail.value
+    })
+    console.log(this.data.name)
+  },
+
+  getId:function(e){
+    this.setData({
+      id:e.detail.value
+    })
+    console.log(this.data.id)
+  },
+
+  getAge:function(e){
+    this.setData({
+      age:e.detail.value
+    })
+    console.log(this.data.age)
+  },
+
+  getGroup:function(e){
+    this.setData({
+      group:e.detail.value
+    })
+    console.log(this.data.group)
+  },
+
+  
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
+
+  bindPickerChange: function (e) {
+    console.log(e)
+    this.setData({
+      index: e.detail.value
+    })
+    console.log(this.data.index)
+
+  },
+
+  bindPositionChange:function(e){
+    console.log(e)
+    this.setData({
+      index2:e.detail.value
+    })
+    console.log(this.data.index2)
+  },
+
+  login:function(){
+    wx.request({
+      url:'http://192.168.1.181:8080/register/inster',
+      data:({
+        name:this.data.name,
+        id:this.data.id,
+        age:this.data.age,
+        group:this.data.group,
+        sex:this.data.index,
+        position:this.data.position
+      })
+      ,
+      success(res){
+        wx.switchTab({
+          url: '/pages/collect/collect',
+        })
+      }
+    })
+  },
+
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({

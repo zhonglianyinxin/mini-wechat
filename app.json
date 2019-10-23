@@ -1,12 +1,14 @@
 {
   "pages": [
+  "pages/collect/collect",
     "pages/index/index",
     "pages/logs/logs"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "日常学修统计表",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"
