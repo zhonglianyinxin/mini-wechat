@@ -85,11 +85,12 @@ Page({
     console.log(e)
     this.setData({
       index2:e.detail.value
+      
     })
     console.log(this.data.index2)
   },
 
-  login:function(){
+  register:function(){
     wx.request({
       url:'http://192.168.1.181:8080/register/inster',
       data:({
@@ -103,7 +104,7 @@ Page({
       ,
       success(res){
         wx.switchTab({
-          url: '/pages/collect/collect',
+          url: '/pages/login/login',
         })
       }
     })

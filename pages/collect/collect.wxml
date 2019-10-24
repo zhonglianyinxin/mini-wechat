@@ -1,23 +1,43 @@
 <!--pages/collect/collect.wxml-->
 <view class="container">
-前行广释
-  <view class="book1">
-  <text class="title1"></text>
-  <input class="num1" type="number" bindblur="getNum1" placeholder="从第几课"></input>
+
+ <view class="section">
+  <view class="section__title">本次学修从</view>
+  <picker mode="date" value="{{date1}}" start="2011-09-01" end="2019-11-01" bindchange="bindDateChange1">
+    <view class="picker">
+      请选择起始时间: {{date1}}
+    </view>
+  </picker>
+</view>
+
+<view class="section">
+  <view class="section__title">持续到</view>
+  <picker mode="date" value="{{date2}}" start="2011-09-01" end="2019-11-01" bindchange="bindDateChange2">
+    <view class="picker">
+      请选择截止时间: {{date2}}
+    </view>
+  </picker>
+</view>
+
+  <text>前行广释</text>
+  <view class="qxgs">
+  <input class="num1" bindblur="getNum1" placeholder="从第几课"></input>
   到
-  <input class="num2" type="number" bindblur="getNum2" placeholder="第几课"></input>
+  <input class="num2"  bindblur="getNum2" placeholder="第几课"></input>
+  </view>
+
   </view>
 
   <view>
    法本：已完成
-   <input class="num3" bindblur="getnum3" placeholder="多少课"></input>
+   <input class="num3" bindblur="getNum3" placeholder="多少课"></input>
    法本：未完成
    <input class="num4" bindblur="getNum4" placeholder="多少课"></input>
   </view> 
   
   <view>
    音视频：已完成
-   <input class="num5" bindblur="getnum5" placeholder="多少课"></input>
+   <input class="num5" bindblur="getNum5" placeholder="多少课"></input>
    音视频：未完成
    <input class="num6" bindblur="getNum6" placeholder="多少课"></input>
   </view> 
@@ -25,67 +45,66 @@
 大学演讲
 <view class="book2">
   <text class="title2"></text>
-  <input class="num7" type="number" bindblur="getNum7" placeholder="从第几课"></input>
+  <input class="num7"  bindblur="getNum7" placeholder="从第几课"></input>
   到
-  <input class="num8" type="number" bindblur="getNum8" placeholder="第几课"></input>
+  <input class="num8"  bindblur="getNum8" placeholder="第几课"></input>
   </view>
 
 <view>
    法本：已完成
-   <input class="num9" bindblur="getnum9" placeholder="多少册"></input>
+   <input class="num9" bindblur="getNum9" placeholder="多少册"></input>
    法本：未完成
    <input class="num10" bindblur="getNum10" placeholder="多少册"></input>
   </view> 
 
   <view>
    音视频：已完成
-   <input class="num11" bindblur="getnum11" placeholder="多少册"></input>
+   <input class="num11" bindblur="getNum11" placeholder="多少册"></input>
    音视频：未完成
    <input class="num12" bindblur="getNum12" placeholder="多少册"></input>
   </view> 
-观修
-  <view class="book3">
-  <text class="title3"></text>
-  <input class="num13" type="number" bindblur="getNum13" placeholder="从第几修法"></input>
+
+  <view>
+  <text>观修</text>
+  <input class="num13"  bindblur="getNum13" placeholder="从第几修法"></input>
   到
-  <input class="num14" type="number" bindblur="getNum14" placeholder="第几修法"></input>
+  <input class="num14"  bindblur="getNum14" placeholder="第几修法"></input>
   </view>
 
 <view>
    已完成修法
-   <input class="num15" bindblur="getnum15" placeholder="多少修法"></input>
+   <input class="num15" bindblur="getNum15" placeholder="多少修法"></input>
    未完成修法
    <input class="num16" bindblur="getNum16" placeholder="多少修法"></input>
   </view> 
 
-加行实修
+<text>加行实修</text>
 <view>
-  <text>顶礼</text>
-  <input class="num17" type="number" bindblur="getNum17" placeholder="累计完成数"></input>
+  <text1>顶礼</text1>
+  <input class="num17"  bindblur="getNum17" placeholder="累计完成数"></input>
   </view>
 
   <view>
-  <text>皈依</text>
-  <input class="num18" type="number" bindblur="getNum18" placeholder="累计完成数"></input>
+  <text1>皈依</text1>
+  <input class="num18"  bindblur="getNum18" placeholder="累计完成数"></input>
   </view>
 
   <view>
-  <text>发心</text>
-  <input class="num19" type="number" bindblur="getNum19" placeholder="累计完成数"></input>
+  <text1>发心</text1>
+  <input class="num19" bindblur="getNum19" placeholder="累计完成数"></input>
   </view>
 
   <view>
-  <text>百字明</text>
-  <input class="num20" type="number" bindblur="getNum20" placeholder="累计完成数"></input>
+  <text1>百字明</text1>
+  <input class="num20"  bindblur="getNum20" placeholder="累计完成数"></input>
   </view>
 
   <view>
-  <text>供曼扎</text>
-  <input class="num21" type="number" bindblur="getNum21" placeholder="累计完成数"></input>
+  <text1>供曼扎</text1>
+  <input class="num21" bindblur="getNum21" placeholder="累计完成数"></input>
   </view>
 
 <view class="submit">
    <button bindtap="submit">提交</button>
   </view>
 
-</view>

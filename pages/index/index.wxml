@@ -13,11 +13,11 @@
   </view>
 
   <view class="ID">
-   <input class="id" bindblur="getId" placeholder="请输入学员编号"></input>
+   <input class="id" bindblur="getId" placeholder="请输入用户编号"></input>
   </view>
 
   <view>
-   <input class="group" bindblur="getGroup" placeholder="请输入小组号"></input>
+   <input class="group" bindblur="getGroup" placeholder="请输入小组号 *可不填"></input>
   </view>
 
   <view>
@@ -40,8 +40,8 @@
   </picker>
 </view>
 
-  <view class="login">
-   <button bindtap="login">注册</button>
+  <view class="register">
+   <button bindtap="register">注册</button>
   </view>
   
   </view>
