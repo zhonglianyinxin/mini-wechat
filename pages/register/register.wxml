@@ -1,2 +1,74 @@
-<!--pages/register/register.wxml-->
-<text>pages/register/register.wxml</text>
+<!--index.wxml-->
+<form bindsubmit="registerSubmit">
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+<view class='motion flexac'>
+  <view class='motionText'>用户名：</view>
+  <view class="section flexjac">
+      <view class='input1'>
+         <input placeholder="请输入用户名" name="stuName"  bindinput="getStuName" ></input>
+      </view>
+  </view>
+</view>
+<view class='motion flexac'>
+  <view class='motionText'>用户编号：</view>
+  <view class="section flexjac">
+      <view class='input1'>
+         <input placeholder="请输入用户编号" name="stuId"  bindinput="getStuId" ></input>
+      </view>
+  </view>
+</view>
+<view class='motion flexac'>
+  <view class='motionText'>小组编号：</view>
+  <view class="section flexjac">
+      <view class='input1'>
+         <input placeholder="请输入小组编号" name="stuGroupId"  bindinput="getStuGroupId" ></input>
+      </view>
+  </view>
+</view>
+<view class='motion flexac'>
+  <view class='motionText'>用户年龄：</view>
+  <view class="section flexjac">
+      <view class='input1'>
+         <input placeholder="请输入年龄" name="stuAge"  bindinput="getStuAge" ></input>
+      </view>
+  </view>
+</view>
+<view class='motion flexac'>
+  <view class='motionText'>用户性别：</view>
+  <view class="section flexjac">
+    <picker bindchange="getSex" value="{{objectSex[sexIndex].id}}" range="{{objectSex}}" range-key="name">
+     <view class="picker">
+        {{sexName}}
+      </view> 
+    </picker>
+  </view>
+  <!-- 此处的input框可以把滚动选择器的数据放进去，然后点击提交的时候把数据传给后台 -->
+  <input style='display:none;' name="stuSex" value="{{sexIndex}}"></input>
+</view>
+<view class='motion flexac'>
+  <view class='motionText'>用户级别：</view>
+  <view class="section flexjac">
+    <picker bindchange="getPosition" value="{{objectPosition[positionIndex].id}}" range="{{objectPosition}}" range-key="name">
+      <view class="picker">
+        {{positionName}}
+      </view>
+    </picker>
+  </view>
+  <input style='display:none;' name="userLevel" value="{{positionIndex}}"></input>
+</view>
+
+  <!-- <view class="register">
+   <button bindtap="register">注册</button>
+  </view> -->
+  
+  </view>
+
+  <button formType="submit">注册</button> 
+</form>
