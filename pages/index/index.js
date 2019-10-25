@@ -5,44 +5,24 @@ const app = getApp()
 Page({
   data: {
     objectSex:[
-      {
-        id:1,
-        name:'男'
-      },
-      {
-        id:2,
-        name:'女'
-      }
+      {id:1,name:'男'},
+      {id:2,name:'女'}
     ],
     sexIndex:'',
-    sexName:'',
+    sexName:'请选择',
     objectPosition:[
-      {
-        id:1,
-        name:'学员'
-      },
-      {
-        id:2,
-        name:'管理员'
-      }
+      {id:1,name:'学员'},
+      {id:2,name:'管理员'}
     ],
     positionIndex:'',
-    positionName:'',
-    //普通选择器2：（普通json格式数组）    
-    objectArray: [      
-      {        id: 1,        name: '中国'      },      
-      {        id: 2,        name: '美国'      },      
-      {        id: 3,        name: '德国'      },      
-      {        id: 4,        name: '法国'      }    
-    ],    
-    objectIndex:'',
-    objectName: '',
+    positionName:'请选择',
 
-    name:'',
-    id:'',
-    group:'',
-    age:'',
-    userInfo: {},
+    stuName:'',
+    stuId:'',
+    stuGroupId:'',
+    stuAge:'',
+    stuSex:'',
+    userLevel:'',
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
@@ -54,35 +34,114 @@ Page({
   //     objectName: this.data.objectArray[e.detail.value].name,
   //   })
   // },
-  getName:function(e){
-    this.setData({
-      name:e.detail.value
-    })
-    console.log(this.data.name)
-  },
 
-  getId:function(e){
+  //输入框事件
+  getStuName:function(e){
+    // console.log(e)
     this.setData({
-      id:e.detail.value
+      stuName:e.detail.value
     })
-    console.log(this.data.id)
   },
-
-  getAge:function(e){
+  getStuId:function(e){
+    // console.log(e)
     this.setData({
-      age:e.detail.value
+      stuId:e.detail.value
+    })
+  },
+  getStuGroupId: function (e) {
+    this.setData({
+      stuGroupId: e.detail.value
+    })
+  },
+  getStuAge:function(e){
+    this.setData({
+      stuAge:e.detail.value
     })
     console.log(this.data.age)
   },
 
-  getGroup:function(e){
+
+  //下拉框事件
+  getSex: function (e) {
+    console.log(e.detail.value, this.data.objectSex[e.detail.value].id)
     this.setData({
-      group:e.detail.value
+      sexIndex: this.data.objectSex[e.detail.value].id,
+      sexName: this.data.objectSex[e.detail.value].name,
     })
-    console.log(this.data.group)
+  },
+  getPosition: function (e) {
+    console.log(e.detail.value, this.data.objectPosition[e.detail.value].id)
+    this.setData({
+      positionIndex: this.data.objectPosition[e.detail.value].id,
+      positionName: this.data.objectPosition[e.detail.value].name,
+    })
+  },
+  
+  //注册表单提交事件
+  // registerSubmit(e) {
+  //   console.log('form=>', e)
+  //   let val = e.detail.value
+  //   console.log('form', val)
+  // },
+  registerSubmit: function (e) { 
+    console.log('form=>', e)
+    console.log('form发生了submit事件，携带数据为：', e.detail.value); 
+    let { stuName, stuId, stuGroupId, stuAge, stuSex, userLevel} = e.detail.value; 
+    if (stuName == '' ) {
+      wx.showToast({
+        title: '用户名不能为空',
+        icon: 'success'
+      })
+      return false
+    }
+    if (stuId == '' || stuGroupId == '') {
+      wx.showToast({
+        title: '编号不能为空',
+      })
+      return false
+    }
+    if (userLevel == '') {
+      wx.showToast({
+        title: '级别不能为空',
+      })
+      return false
+    }
+
+
+    wx.request({
+
+      url: 'http://localhost:8080/register/inster',
+      method: 'POST',
+      data: {
+        stuName: this.data.stuName,
+        stuId: this.data.stuId,
+        stuGroupId: this.data.stuGroupId,
+        stuAge: this.data.stuAge,
+        stuSex: this.data.sexIndex,
+        userLevel: this.data.positionIndex
+      },
+      success: function (res) {
+        console.log(res)
+        console.log(res.data)
+        var userLevel = res.data.userLevel;
+        var success = res.data.success;
+        if (success == 'true' && userLevel==1) {
+          wx.reLaunch({
+            url: that.data.callback,
+          })
+        } else {
+          wx.showToast({
+            title: msg,
+            icon: 'success',
+            duration: 1500
+          })
+        }
+      }
+
+    })
   },
 
-  
+
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
@@ -90,21 +149,7 @@ Page({
     })
   },
 
-  getSex: function (e) {
-    // console.log(e.detail.value, this.data.objectSex[e.detail.value].id)
-    this.setData({
-      sexIndex: this.data.objectSex[e.detail.value].id,
-      sexName: this.data.objectSex[e.detail.value].name,
-    })
-  },
-
-  getPosition:function(e){
-    // console.log(e.detail.value, this.data.objectPosition[e.detail.value].id)
-    this.setData({
-      positionIndex: this.data.objectPosition[e.detail.value].id,
-      positionName: this.data.objectPosition[e.detail.value].name,
-    })
-  },
+  
   register:function(){
     wx.request({
       url:'http://localhost:8080/register/inster',
@@ -160,5 +205,6 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  }
+  },
+
 })
