@@ -25,20 +25,23 @@
   </view>
 
 <view class="section">
-  <picker bindchange="bindPickerChange" value="{{index}}" range="{{sex}}">
+  <picker bindchange="getSex" value="{{objectSex[sexIndex].id}}" range="{{objectSex}}" range-key="name">
     <view class="picker">
-      请选择性别：{{sex[index]}}
+      请选择性别：{{sexName}}
     </view>
   </picker>
 </view>
 
 <view class="pst">
-  <picker bindchange="bindPositionChange" value="{{index}}" range="{{position}}">
+  <picker bindchange="getPosition" value="{{objectPosition[positionIndex].id}}" range="{{objectPosition}}" range-key="name">
     <view class="picker">
-      您是学员还是管理员：{{position[index2]}}
+      您是学员还是管理员：{{positionName}}
     </view>
   </picker>
 </view>
+
+
+
 
   <view class="register">
    <button bindtap="register">注册</button>

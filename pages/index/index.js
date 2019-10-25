@@ -4,19 +4,18 @@ const app = getApp()
 
 Page({
   data: {
-   
-    sex:['男','女'],
     objectSex:[
       {
-      id:1,
-      name:'男'
+        id:1,
+        name:'男'
       },
       {
         id:2,
         name:'女'
       }
     ],
-    position:['学员','管理员'],
+    sexIndex:'',
+    sexName:'',
     objectPosition:[
       {
         id:1,
@@ -27,6 +26,18 @@ Page({
         name:'管理员'
       }
     ],
+    positionIndex:'',
+    positionName:'',
+    //普通选择器2：（普通json格式数组）    
+    objectArray: [      
+      {        id: 1,        name: '中国'      },      
+      {        id: 2,        name: '美国'      },      
+      {        id: 3,        name: '德国'      },      
+      {        id: 4,        name: '法国'      }    
+    ],    
+    objectIndex:'',
+    objectName: '',
+
     name:'',
     id:'',
     group:'',
@@ -35,7 +46,14 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-
+  // 改变下拉选项
+  // bindPickerChange2: function (e) {
+  //   console.log(e.detail.value,this.data.objectArray[e.detail.value].id)
+  //   this.setData({   //给变量赋值
+  //     objectIndex: this.data.objectArray[e.detail.value].id,
+  //     objectName: this.data.objectArray[e.detail.value].name,
+  //   })
+  // },
   getName:function(e){
     this.setData({
       name:e.detail.value
@@ -72,27 +90,24 @@ Page({
     })
   },
 
-  bindPickerChange: function (e) {
-    console.log(e)
+  getSex: function (e) {
+    // console.log(e.detail.value, this.data.objectSex[e.detail.value].id)
     this.setData({
-      index: e.detail.value
+      sexIndex: this.data.objectSex[e.detail.value].id,
+      sexName: this.data.objectSex[e.detail.value].name,
     })
-    console.log(this.data.index)
-
   },
 
-  bindPositionChange:function(e){
-    console.log(e)
+  getPosition:function(e){
+    // console.log(e.detail.value, this.data.objectPosition[e.detail.value].id)
     this.setData({
-      index2:e.detail.value
-      
+      positionIndex: this.data.objectPosition[e.detail.value].id,
+      positionName: this.data.objectPosition[e.detail.value].name,
     })
-    console.log(this.data.index2)
   },
-
   register:function(){
     wx.request({
-      url:'http://192.168.1.181:8080/register/inster',
+      url:'http://localhost:8080/register/inster',
       data:({
         name:this.data.name,
         id:this.data.id,
