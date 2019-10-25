@@ -6,7 +6,8 @@
     "pages/logs/logs",
     "pages/mydata/mydata",
     "pages/groups/groups",
-    "pages/groups_data/groups_data"
+    "pages/groups_data/groups_data",
+    "pages/register/register"
   ],
   "window": {
     "backgroundTextStyle": "light",
