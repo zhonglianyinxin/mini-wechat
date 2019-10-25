@@ -4,7 +4,4 @@
  <button class="login" bindtap="login"> 登录</button>
 </view>
 
-<view>
- <button class="logon" bindtap="logon"> 注册</button>
-</view>
 

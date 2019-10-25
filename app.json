@@ -20,14 +20,14 @@
       {
         "pagePath": "pages/collect/collect",
         "text": "填写",
-        "iconPath": "/images/tianxie1.png",
-        "selectedIconPath": "/images/tianxie1_select.png"
+        "iconPath": "/images/tianxie.png",
+        "selectedIconPath": "/images/tianxie_select.png"
       },
       {
         "pagePath": "pages/mydata/mydata",
         "text": "我的",
-        "iconPath": "/images/wode1.png",
-        "selectedIconPath": "/images/wode1_select.png"
+        "iconPath": "/images/wode.png",
+        "selectedIconPath": "/images/wode_select.png"
       }
     ]
   },
