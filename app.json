@@ -1,13 +1,13 @@
 {
   "pages": [
+    "pages/register/register",
     "pages/collect/collect",
     "pages/login/login",
     "pages/index/index",
     "pages/logs/logs",
     "pages/mydata/mydata",
     "pages/groups/groups",
-    "pages/groups_data/groups_data",
-    "pages/register/register"
+    "pages/groups_data/groups_data"
   ],
   "window": {
     "backgroundTextStyle": "light",
