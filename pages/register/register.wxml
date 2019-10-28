@@ -8,12 +8,22 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-
+<view class='motion flexac'>
+  <view class='motionText'>用户级别：</view>
+  <view class="section flexjac">
+    <picker bindchange="getPosition" value="{{objectPosition[positionIndex].id}}" range="{{objectPosition}}" range-key="name">
+      <view class="picker">
+        {{positionName}}
+      </view>
+    </picker>
+  </view>
+  <input style='display:none;' name="userLevel" value="{{positionIndex}}"></input>
+</view>
 <view class='motion flexac'>
   <view class='motionText'>用户编号：</view>
   <view class="section flexjac">
       <view class='input1'>
-         <input placeholder="请输入用户编号" name="stuId"  bindinput="getStuId" ></input>
+         <input placeholder="请输入用户编号" name="userNo"  bindinput="getUserNo" ></input>
       </view>
   </view>
 </view>
@@ -21,7 +31,7 @@
   <view class='motionText'>用户名：</view>
   <view class="section flexjac">
       <view class='input1'>
-         <input placeholder="请输入用户名" name="stuName"  bindinput="getStuName" ></input>
+         <input placeholder="请输入用户名" name="userName"  bindinput="getUserName" ></input>
       </view>
   </view>
 </view>
@@ -53,16 +63,14 @@
   <!-- 此处的input框可以把滚动选择器的数据放进去，然后点击提交的时候把数据传给后台 -->
   <!-- <input style='display:none;' name="stuSex" value="{{sexIndex}}"></input>
 </view>  -->
+
 <view class='motion flexac'>
-  <view class='motionText'>用户级别：</view>
+  <view class='motionText'>密码：</view>
   <view class="section flexjac">
-    <picker bindchange="getPosition" value="{{objectPosition[positionIndex].id}}" range="{{objectPosition}}" range-key="name">
-      <view class="picker">
-        {{positionName}}
+      <view class='input1'>
+         <input password  placeholder="请输入密码" name="userPwd"  bindinput="getUserPwd" ></input>
       </view>
-    </picker>
   </view>
-  <input style='display:none;' name="userLevel" value="{{positionIndex}}"></input>
 </view>
   </view>
   <button formType="submit">注册</button> 

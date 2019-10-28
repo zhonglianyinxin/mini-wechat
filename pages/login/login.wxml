@@ -1,6 +1,30 @@
 <!--pages/login/login.wxml-->
 <text>欢迎使用加行学修日常统计小程序</text>
+<view class='motion flexac'>
+  <view class='motionText'>用户编号：</view>
+  <view class="section flexjac">
+      <view class='input1'>
+         <input placeholder="请输入用户编号" name="stuId"  bindinput="getStuId" ></input>
+      </view>
+  </view>
+</view>
+<view class='motion flexac'>
+  <view class='motionText'>用户名：</view>
+  <view class="section flexjac">
+      <view class='input1'>
+         <input placeholder="请输入用户名" name="stuName"  bindinput="getStuName" ></input>
+      </view>
+  </view>
+</view>
 <view>
+<view class='motion flexac'>
+  <view class='motionText'>密码：</view>
+  <view class="section flexjac">
+      <view class='input1'>
+         <input password  placeholder="请输入密码" name="stuName"  bindinput="getStuName" ></input>
+      </view>
+  </view>
+</view>
  <button class="login" bindtap="login"> 登录</button>
 </view>
 

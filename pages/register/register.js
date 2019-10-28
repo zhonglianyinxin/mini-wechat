@@ -4,12 +4,12 @@ const app = getApp()
 
 Page({
   data: {
-    objectSex: [
-      { id: 1, name: '男' },
-      { id: 2, name: '女' }
-    ],
-    sexIndex: '',
-    sexName: '请选择',
+    // objectSex: [
+    //   { id: 1, name: '男' },
+    //   { id: 2, name: '女' }
+    // ],
+    // sexIndex: '',
+    // sexName: '请选择',
     objectPosition: [
       { id: 1, name: '学员' },
       { id: 2, name: '管理员' }
@@ -17,12 +17,11 @@ Page({
     positionIndex: '',
     positionName: '请选择',
 
-    stuName: '',
-    stuId: '',
-    stuGroupId: '',
-    stuAge: '',
-    stuSex: '',
     userLevel: '',
+    userNo: '',
+    userName: '',
+    userPwd: '',
+    
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
@@ -36,39 +35,32 @@ Page({
   // },
 
   //输入框事件
-  getStuName: function (e) {
+  getUserNo: function (e) {
     // console.log(e)
     this.setData({
-      stuName: e.detail.value
+      userNo: e.detail.value
     })
   },
-  getStuId: function (e) {
+  getUserName: function (e) {
     // console.log(e)
     this.setData({
-      stuId: e.detail.value
+      userName: e.detail.value
     })
   },
-  getStuGroupId: function (e) {
+  getUserPwd: function (e) {
     this.setData({
-      stuGroupId: e.detail.value
+      userPwd: e.detail.value
     })
   },
-  getStuAge: function (e) {
-    this.setData({
-      stuAge: e.detail.value
-    })
-    console.log(this.data.age)
-  },
-
 
   //下拉框事件
-  getSex: function (e) {
-    console.log(e.detail.value, this.data.objectSex[e.detail.value].id)
-    this.setData({
-      sexIndex: this.data.objectSex[e.detail.value].id,
-      sexName: this.data.objectSex[e.detail.value].name,
-    })
-  },
+  // getSex: function (e) {
+  //   console.log(e.detail.value, this.data.objectSex[e.detail.value].id)
+  //   this.setData({
+  //     sexIndex: this.data.objectSex[e.detail.value].id,
+  //     sexName: this.data.objectSex[e.detail.value].name,
+  //   })
+  // },
   getPosition: function (e) {
     console.log(e.detail.value, this.data.objectPosition[e.detail.value].id)
     this.setData({
@@ -78,25 +70,26 @@ Page({
   },
 
   //注册表单提交事件
-  // registerSubmit(e) {
-  //   console.log('form=>', e)
-  //   let val = e.detail.value
-  //   console.log('form', val)
-  // },
   registerSubmit: function (e) {
     console.log('form=>', e)
     console.log('form发生了submit事件，携带数据为：', e.detail.value);
-    let { stuName, stuId, stuGroupId, stuAge, stuSex, userLevel } = e.detail.value;
-    if (stuName == '') {
+    let { userName, userNo, userPwd, userLevel } = e.detail.value;
+    if (userName == '') {
       wx.showToast({
         title: '用户名不能为空',
         icon: 'success'
       })
       return false
     }
-    if (stuId == '' || stuGroupId == '') {
+    if (userNo == '') {
       wx.showToast({
         title: '编号不能为空',
+      })
+      return false
+    }
+    if (userPwd == '') {
+      wx.showToast({
+        title: '密码不能为空',
       })
       return false
     }
@@ -107,18 +100,14 @@ Page({
       return false
     }
 
-
     wx.request({
-
       url: 'http://localhost:8080/register/inster',
       method: 'POST',
       data: {
-        stuName: this.data.stuName,
-        stuId: this.data.stuId,
-        stuGroupId: this.data.stuGroupId,
-        stuAge: this.data.stuAge,
-        stuSex: this.data.sexIndex,
-        userLevel: this.data.positionIndex
+        userName: this.data.userName,
+        userNo: this.data.userNo,
+        userPwd: this.data.userPwd,
+        userLevel: this.data.userLevel
       },
       success: function (res) {
         console.log(res)
@@ -129,11 +118,13 @@ Page({
           wx.reLaunch({
             url: '../login/login',
           })
-        } else {
+        } else if (success == 'true' && userLevel == 2){
+          wx.reLaunch({
+            url: '../groups/groups',
+          })
+        }else{
           wx.showToast({
-            title: msg,
-            icon: 'success',
-            duration: 1500
+            title: '注册失败',
           })
         }
       }
@@ -150,26 +141,7 @@ Page({
   },
 
 
-  register: function () {
-    wx.request({
-      url: 'http://localhost:8080/register/inster',
-      data: ({
-        name: this.data.name,
-        id: this.data.id,
-        age: this.data.age,
-        group: this.data.group,
-        sex: this.data.index,
-        position: this.data.position
-      })
-      ,
-      success(res) {
-        wx.switchTab({
-          url: '/pages/login/login',
-        })
-      }
-    })
-  },
-
+ 
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
