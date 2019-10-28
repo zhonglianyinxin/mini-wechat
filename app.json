@@ -1,13 +1,14 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/register/register",
     "pages/collect/collect",
-    "pages/login/login",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/mydata/mydata",
+    "pages/lessonShow/lessonShow",
     "pages/groups/groups",
-    "pages/groups_data/groups_data"
+    "pages/groups_data/groups_data",
+    "pages/lessonAdd/lessonAdd"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -24,7 +25,7 @@
         "selectedIconPath": "/images/tianxie_select.png"
       },
       {
-        "pagePath": "pages/mydata/mydata",
+        "pagePath": "pages/lessonShow/lessonShow",
         "text": "我的",
         "iconPath": "/images/wode.png",
         "selectedIconPath": "/images/wode_select.png"

@@ -4,6 +4,8 @@ const app = getApp()
 
 Page({
   data: {
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+
     // objectSex: [
     //   { id: 1, name: '男' },
     //   { id: 2, name: '女' }
@@ -21,9 +23,9 @@ Page({
     userNo: '',
     userName: '',
     userPwd: '',
+    // stuGroupId:'',
     
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    hasUserInfo: false
   },
   // 改变下拉选项
   // bindPickerChange2: function (e) {
@@ -31,6 +33,44 @@ Page({
   //   this.setData({   //给变量赋值
   //     objectIndex: this.data.objectArray[e.detail.value].id,
   //     objectName: this.data.objectArray[e.detail.value].name,
+  //   })
+  // },
+
+  // //获取用户信息
+  // onLoad: function () {
+  //   if (app.globalData.userInfo) {
+  //     this.setData({
+  //       userInfo: app.globalData.userInfo,
+  //       hasUserInfo: true
+  //     })
+  //   } else if (this.data.canIUse) {
+  //     // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+  //     // 所以此处加入 callback 以防止这种情况
+  //     app.userInfoReadyCallback = res => {
+  //       this.setData({
+  //         userInfo: res.userInfo,
+  //         hasUserInfo: true
+  //       })
+  //     }
+  //   } else {
+  //     // 在没有 open-type=getUserInfo 版本的兼容处理
+  //     wx.getUserInfo({
+  //       success: res => {
+  //         app.globalData.userInfo = res.userInfo
+  //         this.setData({
+  //           userInfo: res.userInfo,
+  //           hasUserInfo: true
+  //         })
+  //       }
+  //     })
+  //   }
+  // },
+  // getUserInfo: function (e) {
+  //   console.log(e)
+  //   app.globalData.userInfo = e.detail.userInfo
+  //   this.setData({
+  //     userInfo: e.detail.userInfo,
+  //     hasUserInfo: true
   //   })
   // },
 
@@ -51,8 +91,12 @@ Page({
     this.setData({
       userPwd: e.detail.value
     })
-  },
-
+  }, 
+  // getStuGroupId: function(e) {
+  //   this.setData({
+  //     stuGroupId: e.detail.value
+  //   })
+  // }, 
   //下拉框事件
   // getSex: function (e) {
   //   console.log(e.detail.value, this.data.objectSex[e.detail.value].id)
@@ -99,7 +143,13 @@ Page({
       })
       return false
     }
-
+    // if (userLevel == '1' && stuGroupId=='') {
+    //   wx.showToast({
+    //     title: '小组不能为空',
+    //   })
+    //   return false
+    // }
+    console.log('用户级别:' + this.data.positionIndex)
     wx.request({
       url: 'http://localhost:8080/register/inster',
       method: 'POST',
@@ -107,20 +157,16 @@ Page({
         userName: this.data.userName,
         userNo: this.data.userNo,
         userPwd: this.data.userPwd,
-        userLevel: this.data.userLevel
+        userLevel: this.data.positionIndex
       },
       success: function (res) {
         console.log(res)
         console.log(res.data)
         var userLevel = res.data.userLevel;
         var success = res.data.success;
-        if (success == 'true' && userLevel == 1) {
+        if (success == 'true') {
           wx.reLaunch({
             url: '../login/login',
-          })
-        } else if (success == 'true' && userLevel == 2){
-          wx.reLaunch({
-            url: '../groups/groups',
           })
         }else{
           wx.showToast({
@@ -142,41 +188,6 @@ Page({
 
 
  
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
-  },
-  getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
+
 
 })

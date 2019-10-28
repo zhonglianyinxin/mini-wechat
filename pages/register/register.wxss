@@ -1,25 +1,6 @@
 /**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-.userinfo-avatar {
-  display: flex;
-  flex-direction: row;
-  margin-top: 100rpx;
-  width: 150rpx;
-  height: 150rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: rgb(14, 13, 13);
-}
 input {
-  border: 2rpx solid rgb(129, 128, 229);
   height: 90rpx;
   border-radius: 12rpx;
   padding-left: 16rpx;

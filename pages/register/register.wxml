@@ -1,13 +1,7 @@
 <!--index.wxml-->
 <form bindsubmit="registerSubmit">
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
+
 <view class='motion flexac'>
   <view class='motionText'>用户级别：</view>
   <view class="section flexjac">
@@ -19,6 +13,8 @@
   </view>
   <input style='display:none;' name="userLevel" value="{{positionIndex}}"></input>
 </view>
+
+
 <view class='motion flexac'>
   <view class='motionText'>用户编号：</view>
   <view class="section flexjac">
@@ -35,14 +31,23 @@
       </view>
   </view>
 </view>
+<view class='motion flexac'>
+  <view class='motionText'>密码：</view>
+  <view class="section flexjac">
+      <view class='input1'>
+         <input password  placeholder="请输入密码" name="userPwd"  bindinput="getUserPwd" ></input>
+      </view>
+  </view>
+</view>
 <!-- <view class='motion flexac'>
   <view class='motionText'>小组编号：</view>
   <view class="section flexjac">
       <view class='input1'>
-         <input placeholder="请输入小组编号" name="stuGroupId"  bindinput="getStuGroupId" ></input>
+         <input placeholder="请输入小组编号，如X01" name="stuGroupId"  bindinput="getStuGroupId" ></input>
       </view>
   </view>
-</view>
+</view> -->
+<!-- 
 <view class='motion flexac'>
   <view class='motionText'>用户年龄：</view>
   <view class="section flexjac">
@@ -64,14 +69,7 @@
   <!-- <input style='display:none;' name="stuSex" value="{{sexIndex}}"></input>
 </view>  -->
 
-<view class='motion flexac'>
-  <view class='motionText'>密码：</view>
-  <view class="section flexjac">
-      <view class='input1'>
-         <input password  placeholder="请输入密码" name="userPwd"  bindinput="getUserPwd" ></input>
-      </view>
-  </view>
-</view>
+
   </view>
   <button formType="submit">注册</button> 
 </form>

@@ -1,31 +1,49 @@
 <!--pages/login/login.wxml-->
-<text>欢迎使用加行学修日常统计小程序</text>
-<view class='motion flexac'>
-  <view class='motionText'>用户编号：</view>
-  <view class="section flexjac">
-      <view class='input1'>
-         <input placeholder="请输入用户编号" name="stuId"  bindinput="getStuId" ></input>
-      </view>
-  </view>
-</view>
-<view class='motion flexac'>
-  <view class='motionText'>用户名：</view>
-  <view class="section flexjac">
-      <view class='input1'>
-         <input placeholder="请输入用户名" name="stuName"  bindinput="getStuName" ></input>
-      </view>
-  </view>
-</view>
-<view>
-<view class='motion flexac'>
-  <view class='motionText'>密码：</view>
-  <view class="section flexjac">
-      <view class='input1'>
-         <input password  placeholder="请输入密码" name="stuName"  bindinput="getStuName" ></input>
-      </view>
-  </view>
-</view>
- <button class="login" bindtap="login"> 登录</button>
-</view>
+<form bindsubmit="loginSubmit">
 
-
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <!-- <view class='motion flexac'>
+        <view class='motionText'>用户级别：</view>
+        <view class="section flexjac">
+          <picker bindchange="getPosition" value="{{objectPosition[positionIndex].id}}" range="{{objectPosition}}" range-key="name">
+            <view class="picker">
+              {{positionName}}
+            </view>
+          </picker>
+        </view>
+        <input style='display:none;' name="userLevel" value="{{positionIndex}}"></input>
+      </view> -->
+      <view class='motion flexac'>
+        <view class='motionText'>用户编号：</view>
+        <view class="section flexjac">
+           <view class='input1'>
+             <input placeholder="请输入用户编号" name="userNo"  bindinput="getUserNo" ></input>
+           </view>
+         </view>
+      </view>
+      <view class='motion flexac'>
+        <view class='motionText'>用户名：</view>
+        <view class="section flexjac">
+            <view class='input1'>
+              <input placeholder="请输入用户名" name="userName"  bindinput="getUserName" ></input>
+            </view>
+        </view>
+      </view>
+      <view class='motion flexac'>
+        <view class='motionText'>密码：</view>
+        <view class="section flexjac">
+            <view class='input1'>
+              <input password  placeholder="请输入密码" name="userPwd"  bindinput="getUserPwd" ></input>
+            </view>
+        </view>
+      </view>
+    </block>
+    <button formType="submit">登陆</button> 
+  </view>
+</view>
+</form>
