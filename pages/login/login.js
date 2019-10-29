@@ -134,17 +134,40 @@ Page({
                 },                
                 data: { encryptedData: res.encryptedData, iv: res.iv, code: code, userNo: userNo, userName: userName, userPwd: userPwd },                
                 success: function (res) {                  
+                  console.log('用户微信信息:' + res.data)     
+
                   //4.解密成功后 获取自己服务器返回的结果                  
                   if (res.data.status == 1) {                
                     var userLevel = res.data.userLevel;                    
     
                     var userInfo_ = res.data.userInfo;                    
-                    console.log('用户微信信息:'+userInfo_)     
                     wx.setStorageSync('openid', userInfo_.openid)
                     if (userLevel == 1) {
-                      wx.reLaunch({
-                        url: '../lessonAdd/lessonAdd',
+                      wx.request({
+                        url: 'http://localhost:8080/lesson/selectLesson',
+                        method: 'POST',
+                        data: {},
+                        success: function (res) {
+                          console.log(res)
+                          console.log(res.data)
+                          console.log('数组：'+res.data.k)                  
+                          console.log('数组：' + res.data.k[1].lessName)
+                          var model = JSON.stringify(res.data.k);
+                          console.log('转换字符串数组：' + model)
+
+                          if (model != null || model != '') {
+                            wx.navigateTo({
+                              url: '../lessonAdd/lessonAdd?userNo=' + userNo ,
+                            })
+                          } else {
+                            wx.showToast({
+                              title: '数据加载失败',
+                            })
+                          }
+                        }
+
                       })
+               
                     } else {
                       wx.reLaunch({
                         url: '../groups/groups',

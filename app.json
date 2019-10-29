@@ -1,14 +1,18 @@
 {
   "pages": [
-    "pages/login/login",
+                "pages/login/login",
+                
+            "pages/lessonAdd/lessonAdd",
+            
+            
+        
+        
     "pages/register/register",
-    "pages/collect/collect",
     "pages/index/index",
     "pages/logs/logs",
     "pages/lessonShow/lessonShow",
     "pages/groups/groups",
-    "pages/groups_data/groups_data",
-    "pages/lessonAdd/lessonAdd"
+    "pages/groups_data/groups_data"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -16,21 +20,6 @@
     "navigationBarTitleText": "日常学修统计表",
     "navigationBarTextStyle": "black"
   },
-  "tabBar": {
-    "list": [
-      {
-        "pagePath": "pages/collect/collect",
-        "text": "填写",
-        "iconPath": "/images/tianxie.png",
-        "selectedIconPath": "/images/tianxie_select.png"
-      },
-      {
-        "pagePath": "pages/lessonShow/lessonShow",
-        "text": "我的",
-        "iconPath": "/images/wode.png",
-        "selectedIconPath": "/images/wode_select.png"
-      }
-    ]
-  },
   "sitemapLocation": "sitemap.json"
+
 }
