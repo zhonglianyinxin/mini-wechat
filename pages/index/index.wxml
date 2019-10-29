@@ -1,10 +1,8 @@
 <!--pages/login/login.wxml-->
-<text>欢迎使用加行学修日常统计小程序</text>
-<view>
- <button class="login" bindtap="login"> 登录</button>
-</view>
+ <view class='motion flexac'>欢迎使用加行学修日常统计小程序</view>
 
-<view>
+<view class="container">
+ <button class="login" bindtap="login"> 登录</button>
  <button class="register" bindtap="register"> 注册</button>
 </view>
 

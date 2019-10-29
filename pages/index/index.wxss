@@ -1,1 +1,8 @@
-/* pages/login/login.wxss */
+ .motion {
+  margin-left: 130rpx;
+  width: 702rpx;
+  height: 90rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 20rpx;
+  justify-content: space-between;
+}
