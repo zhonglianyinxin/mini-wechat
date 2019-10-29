@@ -5,6 +5,6 @@
 </view>
 
 <view>
- <button class="logon" bindtap="logon"> 注册</button>
+ <button class="register" bindtap="register"> 注册</button>
 </view>
 

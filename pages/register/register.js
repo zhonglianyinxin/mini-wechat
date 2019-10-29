@@ -165,7 +165,7 @@ Page({
         var userLevel = res.data.userLevel;
         var success = res.data.success;
         if (success == 'true') {
-          wx.reLaunch({
+          wx.navigateTo({
             url: '../login/login',
           })
         }else{

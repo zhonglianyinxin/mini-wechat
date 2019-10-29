@@ -1,34 +1,34 @@
-// pages/groups/groups.js
+// pages/groupData/groupData.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    items:[]
+    items: []
   },
 
-  groupData(e){
+  groupData(e) {
     console.log(e)
     var id = e.currentTarget.dataset.id;
-    var app =getApp();
+    var app = getApp();
     app.requestDetailid = id;
-    console.log("id:"+id);
+    console.log("id:" + id);
     wx.request({
-      url: 'http://localhost:8080/group/selectByGroupId',
+      url: 'http://localhost:8080/lesson/selectByExample',
       method: 'POST',
-      data: { groupId: id },
+      data: { userNo: id },
       success: function (res) {
         console.log(res)
         console.log(res.data)
         console.log('数组：' + res.data.k)
-        console.log('数组：' + res.data.k[0].stuId)
+        console.log('数组：' + res.data.k[1].lessName)
         var model = JSON.stringify(res.data.k);
         console.log('转换字符串数组：' + model)
 
         if (model != null || model != '') {
           wx.navigateTo({
-            url: '../groupData/groupData?model=' + model,
+            url: '../lessonShow/lessonShow?userNo=' + id + "&model=" + model,
           })
         } else {
           wx.showToast({
@@ -40,6 +40,7 @@ Page({
     })
 
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -50,11 +51,9 @@ Page({
     this.setData({
       items: models
     })
-    console.log('items:'+this.data.items)
-  
+    console.log('items:' + this.data.items)
+
   },
-
-
 
   /**
    * 生命周期函数--监听页面初次渲染完成

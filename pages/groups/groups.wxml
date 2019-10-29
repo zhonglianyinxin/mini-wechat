@@ -1,2 +1,24 @@
-<!--pages/groups/groups.wxml-->
-<text>pages/groups/groups.wxml</text>
+<view class="container">
+
+ <view class='motion flexac'>
+    <view class="qxgs">
+      <view class='motionText'>小组编号</view>
+    </view>
+  </view>
+  
+<view class="container log-list">
+  <view wx:for="{{items}}" wx:for-item="log" class="items" wx:for-index="key">
+    <view class="classname">
+      <text class="item" bindtap="groupData" data-id="{{log.groupId}}"> {{log.groupId}}</text>
+    </view>
+ 
+  </view>
+</view>
+
+
+<!-- 
+  <view wx:for="{{items}}" wx:for-index="key" wx:for-item="value" class="items" >
+      <view class='item' bindtap="groupData" data-id="{{value.groupId}}">{{value}}</view>
+  </view> -->
+
+</view>

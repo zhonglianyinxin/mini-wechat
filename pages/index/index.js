@@ -8,6 +8,18 @@ Page({
 
   },
 
+  register: function (e) {
+    wx.navigateTo({
+      url: '../register/register',
+    })
+  },
+  login: function (e) {
+    wx.navigateTo({
+      url: '../login/login',
+    })
+  },
+
+
   /**
    * 生命周期函数--监听页面加载
    */

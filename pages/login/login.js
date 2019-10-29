@@ -145,7 +145,6 @@ Page({
                     var userInfo_ = res.data.userInfo;                    
                     wx.setStorageSync('openid', userInfo_.openid)
                     if (userLevel == 1) {
-                      
                       wx.request({
                         url: 'http://localhost:8080/lesson/selectLesson',
                         method: 'POST',
@@ -201,8 +200,30 @@ Page({
                       })
                
                     } else {
-                      wx.reLaunch({
-                        url: '../groups/groups',
+                      wx.request({
+                        url: 'http://localhost:8080/group/selectGroup',
+                        method: 'POST',
+                        data: { },
+                        success: function (res) {
+                          console.log(res)
+                          console.log(res.data)
+                          console.log('数组：' + res.data.k)
+                          console.log('数组：' + res.data.k[1].groupId)
+                          var model = JSON.stringify(res.data.k);
+                          console.log('转换字符串数组：' + model)
+
+                          if (model != null || model != '') {
+                            wx.navigateTo({
+                              url: '../groups/groups?model=' + model,
+
+                            })
+                          } else {
+                            wx.showToast({
+                              title: '数据加载失败',
+                            })
+                          }
+                        }
+
                       })
                     }
                   } else {                    
