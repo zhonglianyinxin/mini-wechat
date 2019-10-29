@@ -1,1 +1,88 @@
-/* pages/mydata/mydata.wxss */
+/* pages/collect/collect.wxss */
+ .container{
+   display: flex;
+   flex-direction: column;
+   font-size: 80;
+
+ }
+
+ .picker{
+  width: 330rpx;
+  color: rgb(216, 27, 27);
+ }
+
+ input {
+  border: 1rpx solid rgb(129, 128, 229);
+  height: 80rpx;
+  border-radius: 10rpx;
+  padding-left: 10rpx;
+}
+text{
+  font-size: 30rpx;
+  width: 200rpx;
+}
+
+.qxgs{
+  display: flex;
+  flex-direction: row;
+
+}
+
+.motion {
+  margin: 20rpx auto;
+  width: 702rpx;
+  height: 88rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 20rpx;
+  justify-content: space-between;
+  box-shadow: 12rpx 0px 21rpx rgba(153, 153, 153, 0.2);
+}
+.motionText {
+  margin-left: 25rpx;
+  font-size: 30rpx;
+  color: rgb(44, 124, 243);
+  width: 200rpx;
+}
+ .motionText1 {
+  font-size: 30rpx;
+  color: rgb(216, 27, 27);
+  width: 200rpx;
+}
+ .motionText2 {
+  margin-left: 25rpx;
+  font-size: 30rpx;
+  color: rgb(27, 202, 255);
+  width: 200rpx;
+}
+ .motionText3 {
+  margin-left: 25rpx;
+  font-size: 30rpx;
+  color: rgb(255, 134, 21);
+  width: 200rpx;
+}
+ .motionText4 {
+  margin-left: 25rpx;
+  font-size: 30rpx;
+  color: rgb(12, 148, 42);
+  width: 200rpx;
+}
+ .motionText5 {
+  margin-left: 25rpx;
+  font-size: 30rpx;
+  color: rgb(12, 148, 42);
+  width: 370rpx;
+}
+ .motionText6 {
+  margin-left: 25rpx;
+  font-size: 30rpx;
+  color: rgb(12, 148, 42);
+  width: 100rpx;
+}
+.box{
+  width: 100rpx;
+}
+.submit{
+  background-color: rgb(89, 176, 226);
+  margin-top: 20rpx 0;
+  
+}

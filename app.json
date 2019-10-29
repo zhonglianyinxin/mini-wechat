@@ -1,16 +1,13 @@
 {
   "pages": [
-                "pages/login/login",
-                
-            "pages/lessonAdd/lessonAdd",
-            
-            
+        "pages/login/login",
         
+    "pages/lessonShow/lessonShow",
         
+    "pages/lessonAdd/lessonAdd",
     "pages/register/register",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/lessonShow/lessonShow",
     "pages/groups/groups",
     "pages/groups_data/groups_data"
   ],

@@ -360,9 +360,31 @@ Page({
         console.log(res.data)
         var success = res.data.success;
         if (success == 'true') {
-          wx.reLaunch({
-            url: '../lessonShow/lessonShow',
+          wx.request({
+            url: 'http://localhost:8080/lesson/selectByExample',
+            method: 'POST',
+            data: { userNo: this.data.userNo},
+            success: function (res) {
+              console.log(res)
+              console.log(res.data)
+              console.log('数组：' + res.data.k)
+              console.log('数组：' + res.data.k[1].lessName)
+              var model = JSON.stringify(res.data.k);
+              console.log('转换字符串数组：' + model)
+
+              if (model != null || model != '') {
+                wx.navigateTo({
+                  url: '../lessonShow/lessonShow?userNo=' + userNo + "&model=" + model,
+                })
+              } else {
+                wx.showToast({
+                  title: '数据加载失败',
+                })
+              }
+            }
+
           })
+
         } else {
           wx.showToast({
             title: '提交失败',

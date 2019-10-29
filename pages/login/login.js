@@ -97,7 +97,7 @@ Page({
   loginSubmit: function (e) {
     console.log('form=>', e)
     console.log('form发生了submit事件，携带数据为：', e.detail.value);
-    let { userName, userNo, userPwd } = e.detail.value;
+    var { userName, userNo, userPwd } = e.detail.value;
     if (userName == '') {
       wx.showToast({
         title: '用户名不能为空',
@@ -117,6 +117,8 @@ Page({
       })
       return false
     }
+    console.log('userNo:'+e.detail.value.userNo)
+    var userNo = e.detail.value.userNo
     wx.login({
       success: function (res) {
         var code = res.code;//登录凭证
@@ -143,22 +145,52 @@ Page({
                     var userInfo_ = res.data.userInfo;                    
                     wx.setStorageSync('openid', userInfo_.openid)
                     if (userLevel == 1) {
+                      
                       wx.request({
                         url: 'http://localhost:8080/lesson/selectLesson',
                         method: 'POST',
-                        data: {},
+                        data: { userNo: userNo },
                         success: function (res) {
                           console.log(res)
                           console.log(res.data)
-                          console.log('数组：'+res.data.k)                  
+                          console.log('数组：'+res.data.k)   
+                          var isInfo = res.data.isInfo;               
                           console.log('数组：' + res.data.k[1].lessName)
                           var model = JSON.stringify(res.data.k);
                           console.log('转换字符串数组：' + model)
 
                           if (model != null || model != '') {
-                            wx.navigateTo({
-                              url: '../lessonAdd/lessonAdd?userNo=' + userNo ,
-                            })
+                            if (isInfo=='true'){
+                              wx.request({
+                                url: 'http://localhost:8080/lesson/selectByExample',
+                                method: 'POST',
+                                data: { userNo: userNo },
+                                success: function (res) {
+                                  console.log(res)
+                                  console.log(res.data)
+                                  console.log('数组：' + res.data.k)
+                                  console.log('数组：' + res.data.k[1].lessName)
+                                  var model = JSON.stringify(res.data.k);
+                                  console.log('转换字符串数组：' + model)
+
+                                  if (model != null || model != '') {
+                                    wx.navigateTo({
+                                      url: '../lessonShow/lessonShow?userNo=' + userNo + "&model=" + model,
+                                    })
+                                  } else {
+                                    wx.showToast({
+                                      title: '数据加载失败',
+                                    })
+                                  }
+                                }
+
+                              })
+                            }else{
+                              wx.navigateTo({
+                                url: '../lessonAdd/lessonAdd?userNo=' + userNo,
+                              })
+                            }
+                            
                           } else {
                             wx.showToast({
                               title: '数据加载失败',

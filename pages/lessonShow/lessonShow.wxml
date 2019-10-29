@@ -1,2 +1,157 @@
-<!--pages/mydata/mydata.wxml-->
-<text>pages/mydata/mydata.wxml</text>
+
+<view class="container">
+
+  <view class='motion flexac'>
+    <view class="qxgs">
+      <view class='motionText1'>本次学修</view>
+      <input name="stuYear" bindblur="getstuYear" placeholder="哪届" disabled value="{{stuYear}}"></input>
+      -
+      <input name="groupId" bindblur="getgroupId" placeholder="小组编号" disabled value="{{groupId}}"></input>
+    </view>
+
+  </view>
+
+  <view class='motion flexac'>
+  <view class="qxgs">
+    <picker mode="date" disabled value="{{studyBeginTime}}" start="2011-09-01" end="2019-11-01" bindchange="bindDateChange1">
+      <view class="picker">
+        起始时间: {{studyBeginTime}}
+      </view>
+    </picker>
+
+    <picker mode="date" disabled value="{{studyEndTime}}" start="2011-09-01" end="2019-11-01" bindchange="bindDateChange2">
+      <view class="picker">
+        截止时间: {{studyEndTime}}
+      </view>
+    </picker>
+  </view>
+</view>
+
+<!-- <view class="container log-list">
+  <block wx:for="{{items}}" wx:for-item="log" wx:key="*this">
+    <view class="classname">
+      <text class="log-item"> {{log.lessId}}</text>
+    </view>
+    <view class="classname">
+      <text class="log-item">{{log.lessName}}</text>
+    </view>
+  </block>
+</view> -->
+
+<!-- <view class='motion flexac'>
+<block wx:for="{{items}}" wx:for-item="log" wx:key="*this">
+  <view class="qxgs">
+    <view class='motionText'>{{log.lessName}}</view>
+    <input name="lessonBegin" bindblur="getlessonBegin" placeholder="从第几课"></input>
+    -
+    <input name="lessonEnd"  bindblur="getlessonEnd" placeholder="到第几课"></input>
+  </view>
+
+  <view class="qxgs">
+    <view class='motionText'>{{log.lessType}}</view>
+    <input name="complete" bindblur="getcomplete" placeholder="已完成"></input>
+    -
+    <input name="noComplete" bindblur="getnoComplete" placeholder="未完成"></input>
+  </view> 
+  <view class="qxgs">
+    <view class='motionText'>{{log.lessType}}</view>
+    <input name="completee" bindblur="getcompletee" placeholder="已完成"></input>
+    -
+    <input name="noCompletee" bindblur="getnoCompletee" placeholder="未完成"></input>
+  </view> 
+  </block>
+</view> -->
+
+
+<view class='motion flexac'>
+  <view class="qxgs">
+    <view class='motionText' name='lessonId'>前行广释</view>
+    <input name="lessonBegin" bindblur="getlessonBegin" placeholder="从第几课" disabled value="{{lessonBegin}}"></input>
+    -
+    <input name="lessonEnd"  bindblur="getlessonEnd" placeholder="到第几课" disabled value="{{lessonEnd}}"></input>
+    </view>
+  </view>
+</view>
+<view class='motion flexac'>
+  <view class="qxgs">
+    <view class='motionText' name='lessonType'>法本</view>
+    <input name="complete" bindblur="getcomplete" placeholder="已完成" disabled value="{{complete}}"></input>
+    -
+    <input name="noComplete" bindblur="getnoComplete" placeholder="未完成" disabled value="{{noComplete}}"></input>
+  </view> 
+</view>
+<view class='motion flexac'>
+  <view class="qxgs">
+    <view class='motionText' name='lessonTypee'>音视频</view>
+    <input name="completee" bindblur="getcompletee" placeholder="已完成" disabled value="{{completee}}"></input>
+    -
+    <input name="noCompletee" bindblur="getnoCompletee" placeholder="未完成" disabled value="{{noCompletee}}"></input>
+  </view> 
+</view> 
+ <view class='motion flexac'>
+  <view class="qxgs">
+    <view class='motionText2' name='lessonId2'>大学演讲</view>
+    <input name="lessonBegin2" bindblur="getlessonBegin2" placeholder="从第几册" disabled value="{{lessonBegin2}}"></input>
+    -
+    <input name="lessonEnd2"  bindblur="getlessonEnd2" placeholder="到第几册" disabled value="{{lessonEnd2}}"></input>
+  </view>
+</view>
+<view class='motion flexac'>
+  <view class="qxgs">
+    <view class='motionText2'>法本</view>
+    <input name="complete2" bindblur="getcomplete2" placeholder="已完成" disabled value="{{complete2}}"></input>
+    -
+    <input name="noComplete2"  bindblur="getnoComplete2" placeholder="未完成" disabled value="{{noComplete2}}"></input>
+  </view>
+</view>
+<view class='motion flexac'>
+  <view class="qxgs">
+    <view class='motionText2'>音视频</view>
+    <input name="completee2" bindblur="getcompletee2" placeholder="已完成" disabled value="{{completee2}}"></input>
+    -
+    <input name="noCompletee2"  bindblur="getnoCompletee2" placeholder="未完成" disabled value="{{noCompletee2}}"></input>
+  </view>
+</view> 
+<view class='motion flexac'>
+  <view class="qxgs">
+    <view class='motionText3' name='lessonId3'>观修</view>
+    <input name="lessonBegin3" bindblur="getlessonBegin3" placeholder="从第几修法" disabled value="{{lessonBegin3}}"></input>
+    -
+    <input name="lessonEnd3"  bindblur="getlessonEnd3" placeholder="到第几修法" disabled value="{{lessonEnd3}}"></input>
+  </view>
+</view>
+<view class='motion flexac'>
+  <view class="qxgs">
+    <view class='motionText3'></view>
+    <input name="complete3" bindblur="getcomplete3" placeholder="已完成" disabled value="{{complete3}}"></input>
+    -
+    <input name="noComplete3"  bindblur="getnoComplete3" placeholder="未完成" disabled value="{{noComplete3}}"></input>
+  </view>
+</view>
+
+
+
+<view class='motion flexac'>
+  <view class='motionText4'>加行实修</view>
+</view>
+<view class='motion flexac'>
+  <view class="qxgs">
+    <view class='motionText5' name='lessonId4'>顶礼</view>
+    <input name="complete4"  bindblur="getcomplete4" placeholder="累计数" disabled value="{{complete4}}"></input>
+    <view class='motionText5' name='lessonId5'>皈依</view>
+    <input name="complete5"  bindblur="getcomplete5" placeholder="累计数" disabled value="{{complete5}}"></input>
+    <view class='motionText5' name='lessonId6'>发心</view>
+    <input name="complete6"  bindblur="getcomplete6" placeholder="累计数" disabled value="{{complete6}}"></input>
+  </view>
+</view>
+<view class='motion flexac'>
+  <view class="qxgs">
+    <view class='motionText6' name='lessonId7'>百字明</view>
+    <input class="box" name="complete7" bindblur="getcomplete7" placeholder="累计数" disabled value="{{complete7}}"></input>
+    <view class='motionText6' name='lessonId8'>供曼扎</view>
+    <input class="box" name="complete8"  bindblur="getcomplete8" placeholder="累计数" disabled value="{{complete8}}"></input>
+  </view>
+</view> 
+
+
+  <!-- <button >返回</button>  -->
