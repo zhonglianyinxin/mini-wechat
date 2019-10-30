@@ -42,5 +42,17 @@
   border-radius: 20rpx;
   justify-content: space-between;
   box-shadow: 12rpx 0px 21rpx rgba(153, 153, 153, 0.2);
+}
+.classname{
+  display: flex;
+  flex-direction: row;
 
+  margin: 40rpx auto;
+  width: 702rpx;
+  height: 100rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 20rpx;
+  justify-content: space-between;
+  box-shadow: 12rpx 0px 21rpx rgba(153, 153, 153, 0.2);
+  text-decoration:underline;
 }

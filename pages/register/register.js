@@ -151,7 +151,7 @@ Page({
     // }
     console.log('用户级别:' + this.data.positionIndex)
     wx.request({
-      url: 'http://localhost:8080/register/inster',
+      url: 'http://192.168.1.181:8080/register/inster',
       method: 'POST',
       data: {
         userName: this.data.userName,

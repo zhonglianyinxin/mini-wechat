@@ -15,7 +15,7 @@ Page({
     app.requestDetailid = id;
     console.log("id:"+id);
     wx.request({
-      url: 'http://localhost:8080/group/selectByGroupId',
+      url: 'http://192.168.1.181:8080/group/selectByGroupId',
       method: 'POST',
       data: { groupId: id },
       success: function (res) {

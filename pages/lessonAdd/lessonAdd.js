@@ -298,8 +298,11 @@ Page({
     //   })
     //   return false
     // }
+    var userNo=this.data.userNo
+    console.log('userNo:' + userNo)
+
     wx.request({
-      url: 'http://localhost:8080/lesson/insertSelective',
+      url: 'http://192.168.1.181:8080/lesson/insertSelective',
       method: 'POST',
       data: {
         userNo:this.data.userNo,
@@ -358,12 +361,14 @@ Page({
       success: function (res) {
         console.log(res)
         console.log(res.data)
+        console.log('userNo:' + userNo)
+
         var success = res.data.success;
         if (success == 'true') {
           wx.request({
-            url: 'http://localhost:8080/lesson/selectByExample',
+            url: 'http://192.168.1.181:8080/lesson/selectByExample',
             method: 'POST',
-            data: { userNo: this.data.userNo},
+            data: { userNo: userNo},
             success: function (res) {
               console.log(res)
               console.log(res.data)

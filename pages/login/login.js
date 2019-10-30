@@ -129,7 +129,7 @@ Page({
               console.log({ encryptedData: res.encryptedData, iv: res.iv, code: code, userNo: userNo, userName: userName, userPwd: userPwd})              
               //3.请求自己的服务器，解密用户信息 获取unionId等加密信息              
               wx.request({
-                url: 'http://localhost:8080/login/login',//自己的服务接口地址                
+                url: 'http://192.168.1.181:8080/login/login',//自己的服务接口地址                
                 method: 'get',                
                 header: {                  
                   "Content-Type": "applciation/json"                
@@ -146,29 +146,30 @@ Page({
                     wx.setStorageSync('openid', userInfo_.openid)
                     if (userLevel == 1) {
                       wx.request({
-                        url: 'http://localhost:8080/lesson/selectLesson',
+                        url: 'http://192.168.1.181:8080/lesson/selectLesson',
                         method: 'POST',
                         data: { userNo: userNo },
                         success: function (res) {
                           console.log(res)
                           console.log(res.data)
-                          console.log('数组：'+res.data.k)   
+                          console.log('课程表数组：'+res.data.k)   
                           var isInfo = res.data.isInfo;               
-                          console.log('数组：' + res.data.k[1].lessName)
+                          console.log('课程表isInfo：' + isInfo)   
+                          console.log('课程表数组：' + res.data.k[1].lessName)
                           var model = JSON.stringify(res.data.k);
-                          console.log('转换字符串数组：' + model)
+                          console.log('课程表转换字符串数组：' + model)
 
                           if (model != null || model != '') {
                             if (isInfo=='true'){
                               wx.request({
-                                url: 'http://localhost:8080/lesson/selectByExample',
+                                url: 'http://192.168.1.181:8080/lesson/selectByExample',
                                 method: 'POST',
                                 data: { userNo: userNo },
                                 success: function (res) {
                                   console.log(res)
                                   console.log(res.data)
-                                  console.log('数组：' + res.data.k)
-                                  console.log('数组：' + res.data.k[1].lessName)
+                                  console.log('课程完成情况信息数组：' + res.data.k)
+                                  console.log('课程完成情况信息数组：' + res.data.k[1].lessName)
                                   var model = JSON.stringify(res.data.k);
                                   console.log('转换字符串数组：' + model)
 
@@ -201,7 +202,7 @@ Page({
                
                     } else {
                       wx.request({
-                        url: 'http://localhost:8080/group/selectGroup',
+                        url: 'http://192.168.1.181:8080/group/selectGroup',
                         method: 'POST',
                         data: { },
                         success: function (res) {

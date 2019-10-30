@@ -17,7 +17,7 @@
 
 <view class="container log-list">
   <view wx:for="{{items}}" wx:for-item="log" class="items" wx:for-index="key">
-  <view class='qxgs'>
+  <view class='classname'>
       <text class="item" bindtap="groupData" data-id="{{log.stuId}}"> {{log.stuId}}</text>
       <text class="item" bindtap="groupData" data-id="{{log.stuId}}"> {{log.stuName}}</text>
       <text class="item" bindtap="groupData" data-id="{{log.stuId}}"> {{log.groupId}}</text>
